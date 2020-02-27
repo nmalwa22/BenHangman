@@ -17,8 +17,7 @@ def getLetter():
     print("What is your guess?")
     letter = raw_input()
 
-#def check():
-    
+
 def won():
     global lives
     if updatedSpaces == word:
@@ -28,9 +27,27 @@ def won():
         if lives == 0:
             print('You lost :(')'''
         getLetter()
-
+    
+def check():
+    global updatedSpaces
+    global lives
+    if letter in word:
+        index = -1
+        for i in word:
+            index += 1
+            if letter == i:
+                updatedSpaces[index] = letter
+            else:
+                continue
+        print (' '.join(updatedSpaces))
+        won()     
+    else: 
+        lives -= 1
+        if lives == 0:
+            print('You loser')
+        getLetter()
+    
 def main():
     initialize()
     getLetter()
-    #check()
-    
+    check()
